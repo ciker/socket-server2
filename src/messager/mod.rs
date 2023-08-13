@@ -20,7 +20,7 @@ impl Messager {
         match self.read_bytes() {
             Ok(size) => Ok(String::from_utf8_lossy(&self.buffer[..size])
                 .trim()
-                .to_string()),
+                .to_lowercase()),
             Err(error) => Err(error),
         }
     }

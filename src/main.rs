@@ -2,8 +2,9 @@ use std::net::TcpListener;
 use std::thread;
 
 mod connection_handler;
-pub mod joker;
-pub mod messager;
+mod joker;
+mod messager;
+mod utils;
 use connection_handler::connection_handler;
 
 fn main() -> std::io::Result<()> {
