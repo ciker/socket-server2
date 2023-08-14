@@ -1,5 +1,6 @@
 FROM rust:latest
 COPY ./ ./
 RUN cargo build --release
-EXPOSE 8080/tcp
+ENV PORT=8080
+EXPOSE $PORT/tcp
 CMD ["./target/release/socket-server"]
