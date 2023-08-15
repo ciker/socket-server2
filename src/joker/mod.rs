@@ -44,12 +44,8 @@ fn talk(messager: &mut Messager, output: &str, accepted_answers: Vec<&str>) -> R
     if let Ok(msg) = messager.read() {
         let normalized = normalize(msg);
         match normalized {
-            _ if normalized == "close" => return Ok(()),
             _ if is_valid_answer(normalized, &accepted_answers) => Ok(()),
-            _ => {
-                let mut aux_messager = messager;
-                return talk(&mut aux_messager, output, accepted_answers);
-            }
+            _ => return talk(messager, output, accepted_answers),
         }
     } else {
         Err("Could not read".to_owned())
